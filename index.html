@@ -11,7 +11,6 @@
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#0d2540">
 
-    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sofrete.com.br/">
     <meta property="og:title" content="SoFrete.com.br | Portal de ajuda ao caminhoneiro">
@@ -27,7 +26,10 @@
             box-sizing: border-box;
         }
 
-        html, body { height: 100%; }
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Helvetica, Arial, sans-serif;
@@ -37,6 +39,14 @@
             align-items: center;
             justify-content: center;
             padding: 24px;
+        }
+
+        /* Fundo: camada fixa que SEMPRE cobre a viewport inteira */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -2;
             background-color: #0d2540;
             background-image: url('background.png');
             background-position: center center;
@@ -44,11 +54,12 @@
             background-size: cover;
         }
 
-        /* Camada escura para dar contraste ao card */
-        body::before {
+        /* Camada escura sobre o fundo, para contraste do card */
+        body::after {
             content: "";
             position: fixed;
             inset: 0;
+            z-index: -1;
             background: rgba(6, 18, 33, 0.55);
         }
 
