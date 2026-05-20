@@ -3,77 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- ========================================== -->
-    <!-- CONFIGURAÇÕES DE SEO                       -->
-    <!-- ========================================== -->
-    <title>SoFrete.com.br | Centro de Cuidado e Gestão do Caminhoneiro</title>
-    <meta name="description" content="Em breve no ar! O SoFrete é o seu novo portal para cuidado, saúde, gestão de fretes, controle financeiro e manutenção do seu caminhão. Aguarde novidades.">
-    <meta name="keywords" content="SoFrete, caminhoneiro, frete, transporte rodoviário, gestão de frota, manutenção de caminhão, saúde do motorista, logística, telemedicina">
+
+    <title>SoFrete.com.br | Portal de ajuda ao caminhoneiro</title>
+    <meta name="description" content="SoFrete - Portal focado na ajuda ao caminhoneiro. Em breve no ar.">
+    <meta name="keywords" content="SoFrete, caminhoneiro, frete, transporte rodoviario, logistica, gestao de frota">
     <meta name="author" content="SoFrete">
     <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0d2540">
 
-    <!-- Open Graph (Para redes sociais como WhatsApp, Facebook, LinkedIn) -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.sofrete.com.br/">
-    <meta property="og:title" content="SoFrete.com.br | O Centro de Cuidado do Caminhoneiro">
-    <meta property="og:description" content="Um novo portal focado na saúde do caminhoneiro, gestão financeira de fretes e manutenção preventiva está chegando.">
-    <meta property="og:image" content="3996641183825636020.png">
+    <meta property="og:url" content="https://sofrete.com.br/">
+    <meta property="og:title" content="SoFrete.com.br | Portal de ajuda ao caminhoneiro">
+    <meta property="og:description" content="Portal focado na ajuda ao caminhoneiro. Em breve no ar.">
+    <meta property="og:image" content="https://sofrete.com.br/logo.png">
+
+    <link rel="icon" type="image/png" href="logo.png">
 
     <style>
-        /* Reset básico */
-        * {
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body, html {
-            height: 100%;
-            width: 100%;
-            background-color: #1a1a1a; 
-        }
+        html, body { height: 100%; }
 
-        /* Container principal com a imagem Desktop (padrão) */
-        .coming-soon-bg {
-            background-image: url('3996641183825636020.png');
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background-color: #0d2540;
+            background-image: url('background.png');
             background-position: center center;
             background-repeat: no-repeat;
-            background-size: cover; 
-            height: 100vh;
+            background-size: cover;
+        }
+
+        /* Camada escura para dar contraste ao card */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: rgba(6, 18, 33, 0.55);
+        }
+
+        .card {
+            position: relative;
             width: 100%;
+            max-width: 460px;
+            background: rgba(255, 255, 255, 0.92);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 24px;
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+            padding: 52px 40px;
+            text-align: center;
         }
 
-        /* ========================================== */
-        /* RESPONSIVIDADE PARA MOBILE                 */
-        /* ========================================== */
-        /* Se a tela for menor que 768px (celulares), troca a imagem de fundo */
-        @media (max-width: 768px) {
-            .coming-soon-bg {
-                background-image: url('3996641183825636022.png');
-            }
+        .card .logo {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            margin: 0 auto 30px;
         }
 
-        /* Classe para esconder textos visualmente, mas manter para o Googlebot (SEO) */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            border: 0;
+        .card .frase {
+            font-size: 1.18rem;
+            line-height: 1.55;
+            color: #16334d;
+            font-weight: 500;
+            margin-bottom: 28px;
+        }
+
+        .card .badge {
+            display: inline-block;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #ffffff;
+            background: linear-gradient(135deg, #2b8fe0, #0d4f8b);
+            padding: 11px 30px;
+            border-radius: 999px;
+            box-shadow: 0 8px 20px rgba(13, 79, 139, 0.35);
+        }
+
+        @media (max-width: 600px) {
+            .card { padding: 40px 26px; border-radius: 20px; }
+            .card .frase { font-size: 1.05rem; }
         }
     </style>
 </head>
 <body>
 
-    <main class="coming-soon-bg">
-        <!-- Textos estruturados para o Google entender do que se trata o seu site -->
-        <h1 class="sr-only">SoFrete.com.br - Um novo portal está chegando</h1>
-        <h2 class="sr-only">Cuidado e Bem-estar do Caminhoneiro, Gestão Financeira, Contas do Frete, Manutenção do Caminhão e Apoio Pós-contratação.</h2>
-        <p class="sr-only">Soluções completas para você e seu caminhão. Em breve no ar. Aguarde novidades!</p>
+    <main class="card">
+        <img class="logo" src="logo.png" alt="SoFrete.com.br - Portal de ajuda ao caminhoneiro">
+        <p class="frase">Portal focado na ajuda ao caminhoneiro.</p>
+        <span class="badge">Em breve</span>
     </main>
 
 </body>
