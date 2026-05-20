@@ -12,32 +12,20 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=traefik_net"
 
-      # ── HTTPS apex (sofrete.com.br) ─────────────────────────────────
-      - "traefik.http.routers.sofrete.rule=Host(`sofrete.com.br`)"
+      # Mesmo site servido no apex E no www, sem redirect entre eles
+      # (sem redirect = impossivel dar loop, mesmo com cache antigo no browser)
+      - "traefik.http.routers.sofrete.rule=Host(`sofrete.com.br`) || Host(`www.sofrete.com.br`)"
       - "traefik.http.routers.sofrete.entrypoints=websecure"
       - "traefik.http.routers.sofrete.tls=true"
       - "traefik.http.routers.sofrete.tls.certresolver=letsencrypt"
       - "traefik.http.routers.sofrete.middlewares=sofrete-headers@docker"
 
-      # ── HTTPS www → redirect para o apex ────────────────────────────
-      - "traefik.http.routers.sofrete-www.rule=Host(`www.sofrete.com.br`)"
-      - "traefik.http.routers.sofrete-www.entrypoints=websecure"
-      - "traefik.http.routers.sofrete-www.tls=true"
-      - "traefik.http.routers.sofrete-www.tls.certresolver=letsencrypt"
-      - "traefik.http.routers.sofrete-www.service=sofrete"
-      - "traefik.http.routers.sofrete-www.middlewares=sofrete-www-redirect@docker"
-      - "traefik.http.middlewares.sofrete-www-redirect.redirectregex.regex=^https://www\\.sofrete\\.com\\.br/(.*)"
-      - "traefik.http.middlewares.sofrete-www-redirect.redirectregex.replacement=https://sofrete.com.br/$${1}"
-      - "traefik.http.middlewares.sofrete-www-redirect.redirectregex.permanent=true"
-
-      # ── Headers de seguranca ────────────────────────────────────────
+      # Headers de seguranca
       - "traefik.http.middlewares.sofrete-headers.headers.customResponseHeaders.X-Frame-Options=SAMEORIGIN"
       - "traefik.http.middlewares.sofrete-headers.headers.customResponseHeaders.X-Content-Type-Options=nosniff"
       - "traefik.http.middlewares.sofrete-headers.headers.customResponseHeaders.Referrer-Policy=strict-origin-when-cross-origin"
-      - "traefik.http.middlewares.sofrete-headers.headers.STSSeconds=63072000"
-      - "traefik.http.middlewares.sofrete-headers.headers.STSIncludeSubdomains=true"
 
-      # ── Porta interna do nginx ──────────────────────────────────────
+      # Porta interna do nginx
       - "traefik.http.services.sofrete.loadbalancer.server.port=80"
 
 networks:
