@@ -13,12 +13,12 @@
     <meta name="author" content="SoFrete">
     <meta name="robots" content="index, follow">
 
-    <!-- Open Graph (Para ficar bonito ao compartilhar no WhatsApp, LinkedIn, etc) -->
+    <!-- Open Graph (Para redes sociais como WhatsApp, Facebook, LinkedIn) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.sofrete.com.br/">
     <meta property="og:title" content="SoFrete.com.br | O Centro de Cuidado do Caminhoneiro">
     <meta property="og:description" content="Um novo portal focado na saúde do caminhoneiro, gestão financeira de fretes e manutenção preventiva está chegando.">
-    <meta property="og:image" content="3996641183825636020.png">
+    <meta property="og:image" content="3996641183825636020.jpeg">
 
     <style>
         /* Reset básico */
@@ -31,17 +31,27 @@
         body, html {
             height: 100%;
             width: 100%;
-            background-color: #1a1a1a; /* Cor de fundo caso a imagem demore a carregar */
+            background-color: #1a1a1a; 
         }
 
-        /* Container principal com a imagem de fundo centralizada */
+        /* Container principal com a imagem Desktop (padrão) */
         .coming-soon-bg {
-            background-image: url('3996641183825636020.png');
+            background-image: url('3996641183825636020.jpeg');
             background-position: center center;
             background-repeat: no-repeat;
-            background-size: cover; /* Garante que a imagem cubra toda a tela sem distorcer */
+            background-size: cover; 
             height: 100vh;
             width: 100%;
+        }
+
+        /* ========================================== */
+        /* RESPONSIVIDADE PARA MOBILE                 */
+        /* ========================================== */
+        /* Se a tela for menor que 768px (celulares), troca a imagem de fundo */
+        @media (max-width: 768px) {
+            .coming-soon-bg {
+                background-image: url('3996641183825636022.png');
+            }
         }
 
         /* Classe para esconder textos visualmente, mas manter para o Googlebot (SEO) */
