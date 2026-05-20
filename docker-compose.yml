@@ -17,8 +17,6 @@ services:
       - "traefik.http.routers.sofrete.entrypoints=websecure"
       - "traefik.http.routers.sofrete.tls=true"
       - "traefik.http.routers.sofrete.tls.certresolver=letsencrypt"
-      - "traefik.http.routers.sofrete.tls.domains[0].main=sofrete.com.br"
-      - "traefik.http.routers.sofrete.tls.domains[0].sans=www.sofrete.com.br"
       - "traefik.http.routers.sofrete.middlewares=sofrete-headers@docker"
 
       # ── HTTPS www → redirect para o apex ────────────────────────────
